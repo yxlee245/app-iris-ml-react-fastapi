@@ -33,3 +33,6 @@ iris-env
 # Data and model files
 data
 models
+
+# Log files
+*.log
