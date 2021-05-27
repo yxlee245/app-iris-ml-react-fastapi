@@ -6,7 +6,8 @@ APP_LOGGER_NAME = "app_iris_ml"
 
 
 def setup_app_level_logger(
-    logger_name: str = APP_LOGGER_NAME, file_name: str = None,
+    logger_name: str = APP_LOGGER_NAME,
+    file_name: str = None,
 ):
     """
     Set up logging to be used throughout whole app
