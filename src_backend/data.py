@@ -75,3 +75,38 @@ class TrainingPipeline(BasePipeline):
     def output(self) -> Tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]:
         # Output training and test sets
         return self.X_train, self.X_test, self.y_train, self.y_test
+
+
+class InferencePipeline(BasePipeline):
+    def __init__(self) -> None:
+        local_logger.info("Inference pipeline initialized")
+
+    def ingest(self, input_dict: Dict[str, float]) -> None:
+        """
+        Takes in input in the form of a dict, with the following fields:
+        sepal_length_cm (float)
+        sepal_width_cm (float)
+        petal_length_cm (float)
+        petal_width_cm (float)
+        """
+        self.input_dict = input_dict
+
+        self._preprocess()
+
+        # Clean up intermediate variables
+        del self.input_dict
+
+    def _preprocess(self) -> None:
+        self.input_array = np.array(
+            [
+                [
+                    self.input_dict["sepal_length_cm"],
+                    self.input_dict["sepal_width_cm"],
+                    self.input_dict["petal_length_cm"],
+                    self.input_dict["petal_width_cm"],
+                ]
+            ]
+        )
+
+    def output(self) -> np.ndarray:
+        return self.input_array
