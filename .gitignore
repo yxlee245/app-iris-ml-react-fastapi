@@ -29,3 +29,7 @@ iris-env
 
 # VSCode artifacts
 .vscode
+
+# Data and model files
+data
+models
