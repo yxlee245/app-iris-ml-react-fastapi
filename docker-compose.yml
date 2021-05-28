@@ -1,0 +1,13 @@
+version: '3'
+services:
+    app:
+        stdin_open: true
+        build: 
+            dockerfile: Dockerfile
+            context: .
+        environment: 
+            - KAGGLE_USERNAME=$KAGGLE_USERNAME
+            - KAGGLE_KEY=$KAGGLE_KEY
+            - PORT=2000
+        ports: 
+            - '8000:2000'
