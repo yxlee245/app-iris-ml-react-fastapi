@@ -4,6 +4,7 @@ import TopAppBar from './components/TopAppBar';
 import ModelSelectBar from './components/ModelSelectBar';
 import ModelTypeDisplay from './components/ModelTypeDisplay';
 import InferenceArea from './components/InferenceArea';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
       <ModelTypeDisplay state={state} />
       <ModelSelectBar state={state} setState={setState} />
       <InferenceArea state={state} setState={setState} />
+      <Footer />
     </div>
   );
 }
