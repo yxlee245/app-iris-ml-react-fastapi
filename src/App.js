@@ -1,12 +1,12 @@
 import './App.css';
 import React, { useState } from 'react';
 import TopAppBar from './components/TopAppBar';
+import ModelSelectBar from './components/ModelSelectBar'
 
 function App() {
 
   const [state, setState] = useState({
     modelType: 'logreg',
-    modelTypeFull: 'Logistic Regression',
     sepalLengthCm: 5.0,
     sepalWidthCm: 5.0,
     petalLengthCm: 5.0,
