@@ -1,5 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 from datetime import datetime
 
 from src_backend.logger import setup_app_level_logger
@@ -23,6 +25,13 @@ FEATURE_NAMES = [
 ]
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), "static")
+templates = Jinja2Templates(directory="templates")
+
+
+@app.get("/", response_class=HTMLResponse)
+async def home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
 @app.post("/api/predict")
@@ -51,5 +60,5 @@ async def predict(request: Request):
 
     return {
         "predictedClass": predicted_class,
-        "probabilities": {c: p for c, p in zip(classes, probs)}
+        "probabilities": {c: p for c, p in zip(classes, probs)},
     }
