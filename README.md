@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# ReactJS + FastAPI App to Predict Iris Species with Machine Learning
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+__Disclaimer:__ This approach of deploying web applications (having both frontend and backend served in a single Docker container) is usually not recommended, especially for cases where traffic/load is expected to be heavy. Thus, the creator of this repo will not take any responsibility for any adverse results that occur due to using the codes in here.
 
-## Available Scripts
+## Intro
+The following is done in this project:
+1. The backend REST server is developed using the [FastAPI library](https://fastapi.tiangolo.com/). This server is used to serve machine learning models trained using the [Scikit-Learn library](https://scikit-learn.org/).
+2. The frontend client server is developed using [ReactJS](https://reactjs.org/). The production build files from the ReactJS part is then served by the FastAPI backend server.
+3. The backend server codes, production build files from ReactJS and persisted machine learning models are transferred into a Dockerfile.
+4. A container is built based on the Dockerfile and pushed into Heroku.
 
-In the project directory, you can run:
+## Trying out the app in Heroku
+Click the image below to access the deployed app in Heroku.
 
-### `npm start`
+<a href="https://iris-ml-react-fastapi-yxlee245.herokuapp.com/"><img src="images/chip_128px.png" alt="Iris ML App"/></a>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+_(The image above is made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>)_
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Deploying the app
+### Prerequisite
+The following environment variables have to be defined for the app to function:
+- `KAGGLE_USERNAME` - your username for your Kaggle account
+- `KAGGLE_KEY` - the secret key to access Kaggle API (Refer [here](https://www.kaggle.com/docs/api) for the steps to generate the API key)
+- `HEROKU_ID` - the email you use to log in to Heroku (Only needed if deploying to Heroku)
+- `HEROKU_API_KEY` - the API key to your Heroku account (Only needed if deploying to Heroku. Can be found in your account settings)
+- `APP_NAME` - the application name in Heroku to deploy the app to (Only needed if deploying to Heroku)
 
-### `npm test`
+### Starting steps
+Clone this repo and navigate to this folder.
+```bash
+git clone https://github.com/yxlee245/app-iris-ml-react-fastapi
+cd app-iris-ml-react-fastapi
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Deploying to Heroku
+This method requires the use of a bash terminal or some other terminal that can execute shell scripts.
+1. Run shell script to deploy to Heroku.
+```bash
+source deploy_heroku.sh
+```
+2. Access the app at https://(app-name).herokuapp.com
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Deploying locally
+1. Run `docker-compose`.
+```bash
+docker-compose up --build
+```
+2. Access the app at http://localhost:8000
