@@ -16,6 +16,7 @@ function App() {
   return (
     <div className="App">
       <TopAppBar />
+      <ModelSelectBar state={state} setState={setState} />
     </div>
   );
 }
