@@ -1,0 +1,7 @@
+notebook==6.3.0
+tqdm==4.60.0
+matplotlib==3.4.2
+umap-learn==0.5.1
+jupyter-contrib-nbextensions==0.5.1
+black==21.5b1
+-r requirements.txt
