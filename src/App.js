@@ -5,6 +5,7 @@ import TopAppBar from './components/TopAppBar';
 function App() {
 
   const [state, setState] = useState({
+    modelType: 'logreg',
     sepalLengthCm: 5.0,
     sepalWidthCm: 5.0,
     petalLengthCm: 5.0,
