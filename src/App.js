@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import TopAppBar from './components/TopAppBar';
 import ModelSelectBar from './components/ModelSelectBar';
 import ModelTypeDisplay from './components/ModelTypeDisplay';
+import InferenceArea from './components/InferenceArea';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
       <TopAppBar />
       <ModelTypeDisplay state={state} />
       <ModelSelectBar state={state} setState={setState} />
+      <InferenceArea state={state} setState={setState} />
     </div>
   );
 }
