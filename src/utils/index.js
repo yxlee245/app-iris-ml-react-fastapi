@@ -4,3 +4,10 @@ export const MODEL_TYPE_MAP = {
     rf: 'Random Forest',
     gbm: 'Gradient Boosting'
 }
+
+export const FIELD_NAME_MAP = {
+    sepalLengthCm: 'Sepal Length (cm)',
+    sepalWidthCm: 'Sepal Width (cm)',
+    petalLengthCm: 'Petal Length (cm)',
+    petalWidthCm: 'Petal Width (cm)'
+}
