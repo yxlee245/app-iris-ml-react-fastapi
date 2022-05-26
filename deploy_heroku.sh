@@ -1,3 +1,5 @@
+set -e
+
 # Login to Heroku container registry
 echo "Logging in to Heroku Container Registry..."
 echo "$HEROKU_API_KEY" | docker login -u "$HEROKU_ID" \
