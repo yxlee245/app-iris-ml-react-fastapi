@@ -23,7 +23,6 @@ The following environment variables have to be defined for the app to function:
 - `KAGGLE_KEY` - the secret key to access Kaggle API (Refer [here](https://www.kaggle.com/docs/api) for the steps to generate the API key)
 - `HEROKU_ID` - the email you use to log in to Heroku (Only needed if deploying to Heroku)
 - `HEROKU_API_KEY` - the API key to your Heroku account (Only needed if deploying to Heroku. Can be found in your account settings)
-- `APP_NAME` - the application name in Heroku to deploy the app to (Only needed if deploying to Heroku)
 
 ### Starting steps
 Clone this repo and navigate to this folder.
@@ -36,7 +35,8 @@ cd app-iris-ml-react-fastapi
 This method requires the use of a bash terminal or some other terminal that can execute shell scripts.
 1. Run shell script to deploy to Heroku.
 ```bash
-source deploy_heroku.sh
+APP_NAME=<some-app-name> bash deploy_heroku.sh
+# e.g. APP_NAME=iris-ml-react-fastapi-yxlee245 bash deploy_heroku.sh
 ```
 2. Access the app at https://(app-name).herokuapp.com
 
